@@ -1,0 +1,72 @@
+@font-face {
+font-family: 'conthrax';
+src: url('/fonts/conthrax-sb.otf') format('opentype'),
+}
+
+body, html {
+font-family: 'conthrax';
+font-size: 16px;
+letter-spacing: 1.5px;
+color: #FAFBF8;
+}
+
+
+body {
+height: auto;
+width: auto;
+align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+
+background-image: url('/images/background.png');
+background-size: 2000px;
+background-repeat: repeat-y;
+background-position: center;
+background-color: #060704;
+
+
+
+}
+
+.content-container {
+width: 400px;
+height: auto;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+text-align: center;
+margin-top: 8%;
+}
+
+.pfp {
+width: 53%;
+height: auto;
+margin-bottom: 20px;
+border-radius: 50%;
+border: 2px solid #DF8700;
+}
+
+.link {
+color: #FAFBF8;
+text-decoration: none;
+border: 1.4px solid #DF8700;
+border-radius: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 30px;
+padding-right: 30px;
+transition: background-color 0.3s;
+line-height: 50px;
+}
+
+.link:hover {
+background-color: #DF8700;
+color: #060704;
+}
+
+.description {
+font-size: 18px;
+padding-bottom: 40px;
+}
