@@ -1,13 +1,13 @@
 @font-face {
 font-family: 'conthrax';
-src: url('/fonts/conthrax-sb.otf') format('opentype'),
+src: url('/fonts/conthrax-sb.ttf') format('truetype'),
 }
 
 body, html {
 font-family: 'conthrax';
-font-size: 16px;
+font-size: 20px;
 letter-spacing: 1.5px;
-color: #FAFBF8;
+color: #050505;
 }
 
 
@@ -18,55 +18,90 @@ align-items: center;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
-
 background-image: url('/images/background.png');
-background-size: 2000px;
-background-repeat: repeat-y;
-background-position: center;
-background-color: #060704;
-
-
-
+background-size: 2000px 30%;
+background-repeat: no-repeat;
+background-position: top;
+background-color: #f6f4f3;
 }
 
 .content-container {
-width: 400px;
+width: 600px;
 height: auto;
 justify-content: center;
 flex-direction: column;
 align-items: center;
 text-align: center;
-margin-top: 8%;
+margin-top: 6%;
+}
+
+.button-container {
 }
 
 .pfp {
-width: 53%;
+width: 32%;
 height: auto;
 margin-bottom: 20px;
 border-radius: 50%;
-border: 2px solid #DF8700;
+border: 2px solid #f6f4f3;
 }
 
 .link {
-color: #FAFBF8;
+color: #050505;
 text-decoration: none;
-border: 1.4px solid #DF8700;
 border-radius: 10px;
 padding-top: 5px;
 padding-bottom: 5px;
 padding-left: 30px;
 padding-right: 30px;
-transition: background-color 0.3s;
-line-height: 50px;
+transition: text-decoration-color linear 0.3s;
+text-decoration: underline;
+text-decoration-color: #66000000;
+text-decoration-thickness: 2.2px;
+text-underline-offset: 7px;
+line-height: 42px;
 }
 
 .link:hover {
-background-color: #DF8700;
-color: #060704;
+text-decoration-color: #d37700;
 }
 
 .description {
-font-size: 18px;
-padding-bottom: 40px;
+font-size: 21px;
+line-height: 30px;
+padding-bottom: 0px;
 }
+
+hr.solid {
+border-top: 2.2px solid #d37700;
+border-radius: 5px;
+}
+
+@media only screen and (max-width: 900px) {
+
+.content-container {
+width: 350px;
+margin-top: 18%;
+}
+
+.description {
+font-size: 16px;
+}
+
+body, html {
+font-size: 15px;
+
+}
+
+.link {
+line-height: 40px;
+}
+body{
+background-size: 2000px 24%;
+}
+.pfp {
+width: 36%;
+}
+
+}
+
