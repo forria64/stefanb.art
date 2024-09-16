@@ -1,107 +1,149 @@
+/* Import custom font */
 @font-face {
-font-family: 'conthrax';
-src: url('/fonts/conthrax-sb.ttf') format('truetype'),
+    font-family: 'Source Code Pro';
+    src: url('../fonts/SourceCodePro-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-body, html {
-font-family: 'conthrax';
-font-size: 20px;
-letter-spacing: 1.5px;
-color: #050505;
-}
-
-
+/* General styles */
 body {
-height: auto;
-width: auto;
-align-items: center;
-display: flex;
-flex-direction: column;
-justify-content: center;
-background-image: url('/images/background.png');
-background-size: 2000px 30%;
-background-repeat: no-repeat;
-background-position: top;
-background-color: #f6f4f3;
+    background-color: black;
+    color: white;
+    font-family: 'Source Code Pro', monospace; /* Global font family */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.content-container {
-width: 600px;
-height: auto;
-justify-content: center;
-flex-direction: column;
-align-items: center;
-text-align: center;
-margin-top: 6%;
+header {
+    position: relative; /* Make header relative to position the nav menus correctly */
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 10; /* Ensure header is above other content */
 }
 
-.button-container {
+#site-title {
+    text-decoration: none;
+    color: white;
 }
 
-.pfp {
-width: 32%;
-height: auto;
-margin-bottom: 20px;
-border-radius: 50%;
-border: 2px solid #f6f4f3;
+#site-title .highlight {
+    color: orange;
 }
 
-.link {
-color: #050505;
-text-decoration: none;
-border-radius: 10px;
-padding-top: 5px;
-padding-bottom: 5px;
-padding-left: 30px;
-padding-right: 30px;
-transition: text-decoration-color linear 0.3s;
-text-decoration: underline;
-text-decoration-color: #66000000;
-text-decoration-thickness: 2.2px;
-text-underline-offset: 7px;
-line-height: 42px;
+#site-title:hover {
+    color: orange;
 }
 
-.link:hover {
-text-decoration-color: #d37700;
+#site-title:hover .highlight {
+    color: white;
 }
 
-.description {
-font-size: 21px;
-line-height: 30px;
-padding-bottom: 0px;
+#menu .highlight {
+    color: orange;
 }
 
-hr.solid {
-border-top: 2.2px solid #d37700;
-border-radius: 5px;
+#menu:hover .highlight {
+    color: white;
 }
 
-@media only screen and (max-width: 900px) {
-
-.content-container {
-width: 350px;
-margin-top: 18%;
+.menu-toggle {
+    cursor: pointer;
 }
 
-.description {
-font-size: 16px;
+.menu-toggle:hover {
+    color: orange;
 }
 
-body, html {
-font-size: 15px;
-
+/* Main menu styles */
+#main-menu {
+    position: absolute; /* Position absolutely to overlay content */
+    top: 60px; /* Adjust this value to align below the header */
+    left: 0;
+    width: 100%; /* Full width of the page */
+    display: flex;
+    justify-content: center;
+    background-color: black; /* Background color to blend with the body */
+    z-index: 20; /* Ensure menu is above the content container */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent */
+    transition: visibility 0s, opacity 0.3s ease-in-out; /* Fade effect */
 }
 
-.link {
-line-height: 40px;
-}
-body{
-background-size: 2000px 24%;
-}
-.pfp {
-width: 36%;
+/* Submenu styles */
+#sub-menu {
+    position: absolute;
+    top: 100px; /* Directly below the main menu */
+    left: 0;
+    width: 100%; /* Full width of the page */
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    z-index: 30; /* Ensure submenu appears above the main menu */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent */
+    transition: visibility 0s, opacity 0.3s ease-in-out; /* Fade effect */
 }
 
+/* Menu buttons should blend into each other */
+nav a,
+nav button {
+    color: white;
+    background-color: gray;
+    border: none;
+    margin: 0; /* Remove margins to blend buttons seamlessly */
+    padding: 10px 0; /* Adjust padding to make buttons span full height */
+    text-align: center;
+    flex-grow: 1; /* Make buttons take equal space */
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+    font-family: 'Source Code Pro', monospace; /* Apply global font */
+    font-size: 16px; /* Set a consistent font size */
+}
+
+
+/* Highlight active and selected menu items */
+nav a:hover,
+nav button:hover,
+nav a.selected,
+nav button.selected {
+    color: orange;
+}
+
+/* Show menus when not hidden */
+#main-menu.show,
+#sub-menu.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Content container styles */
+#content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw; /* 30% of the viewport width */
+    height: 30vw; /* Square aspect ratio */
+    margin: 0 auto;
+    padding-top: 5%;
+    position: relative; /* Needed to keep z-index working */
+    z-index: 1; /* Lower z-index so menus appear above this */
+}
+
+#content-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: black;
+    color: gray;
 }
 
