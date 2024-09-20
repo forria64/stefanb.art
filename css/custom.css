@@ -6,32 +6,34 @@
     font-style: normal;
 }
 
-/* General styles */
+/* General body styles */
 body {
     background-color: black;
     color: white;
-    font-family: 'Source Code Pro', monospace; /* Global font family */
+    font-family: 'Source Code Pro', monospace;
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
+/* Header styles */
 header {
-    position: relative; /* Make header relative to position the nav menus correctly */
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    z-index: 10; /* Ensure header is above other content */
+    background-color: black;
+    z-index: 10;
 }
 
 #site-title {
     text-decoration: none;
     color: white;
+    font-size: 24px;
 }
 
 #site-title .highlight {
-    color: orange;
+    color: orange;  /* Orange dot in the site title */
 }
 
 #site-title:hover {
@@ -39,99 +41,156 @@ header {
 }
 
 #site-title:hover .highlight {
-    color: white;
+    color: white;  /* Dot turns white on hover */
 }
 
-#menu .highlight {
-    color: orange;
-}
-
-#menu:hover .highlight {
-    color: white;
-}
-
+/* Menu toggle button */
 .menu-toggle {
     cursor: pointer;
+    color: white;
+    font-size: 24px;
+}
+
+.menu-toggle .highlight {
+    color: orange;  /* Orange dot in the menu */
 }
 
 .menu-toggle:hover {
     color: orange;
 }
 
-/* Main menu styles */
+.menu-toggle:hover .highlight {
+    color: white;  /* The dot (.) turns white on hover */
+}
+
+/* Main Menu styles */
 #main-menu {
-    position: absolute; /* Position absolutely to overlay content */
-    top: 60px; /* Adjust this value to align below the header */
-    left: 0;
-    width: 100%; /* Full width of the page */
-    display: flex;
-    justify-content: center;
-    background-color: black; /* Background color to blend with the body */
-    z-index: 20; /* Ensure menu is above the content container */
-    visibility: hidden; /* Initially hidden */
-    opacity: 0; /* Fully transparent */
-    transition: visibility 0s, opacity 0.3s ease-in-out; /* Fade effect */
-}
-
-/* Submenu styles */
-#sub-menu {
     position: absolute;
-    top: 100px; /* Directly below the main menu */
+    top: 60px;
     left: 0;
-    width: 100%; /* Full width of the page */
+    width: 100%;
     display: flex;
     justify-content: center;
-    background-color: black;
-    z-index: 30; /* Ensure submenu appears above the main menu */
-    visibility: hidden; /* Initially hidden */
-    opacity: 0; /* Fully transparent */
-    transition: visibility 0s, opacity 0.3s ease-in-out; /* Fade effect */
+    background-color: #333;  /* Main menu background */
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
 }
 
-/* Menu buttons should blend into each other */
-nav a,
-nav button {
-    color: white;
-    background-color: gray;
-    border: none;
-    margin: 0; /* Remove margins to blend buttons seamlessly */
-    padding: 10px 0; /* Adjust padding to make buttons span full height */
-    text-align: center;
-    flex-grow: 1; /* Make buttons take equal space */
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s, background-color 0.3s;
-    font-family: 'Source Code Pro', monospace; /* Apply global font */
-    font-size: 16px; /* Set a consistent font size */
-}
-
-
-/* Highlight active and selected menu items */
-nav a:hover,
-nav button:hover,
-nav a.selected,
-nav button.selected {
-    color: orange;
-}
-
-/* Show menus when not hidden */
-#main-menu.show,
-#sub-menu.show {
+#main-menu.show {
     visibility: visible;
     opacity: 1;
 }
 
-/* Content container styles */
+/* Main menu button when the submenu is open (Canvas Paintings) */
+#canvas-paintings.selected-menu-item {
+    color: orange;  /* Turns text orange when the canvas paintings submenu is open */
+}
+
+/* Main menu button when the submenu is open (Collaborations) */
+#collaborations.selected-menu-item {
+    color: orange;  /* Turns text orange when the collaborations submenu is open */
+}
+
+
+nav a,
+nav button {
+    color: white;
+    background-color: #333;  /* Default background for main menu items */
+    border: none;
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+    flex-grow: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+}
+
+/* Hover and active states for main menu items */
+nav a:hover,
+nav button:hover,
+nav button.active,
+nav a.about-link.active,
+nav a.contact-link.active {
+    color: orange;
+}
+
+nav a:hover,
+nav button:hover {
+  background-color: #555;
+}
+
+/* Submenu styles (for canvas paintings and collaboration) */
+#sub-menu,
+#collaboration-submenu {
+    position: absolute;
+    top: 100px; /* Submenu appears below the main menu */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #555;  /* Consistent gray for the submenus */
+    z-index: 30;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    padding: 0;
+}
+
+#sub-menu.show,
+#collaboration-submenu.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Submenu items */
+#sub-menu a,
+#collaboration-submenu a {
+    background-color: #555;  /* Consistent gray for submenu items */
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    flex-grow: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+#sub-menu a:hover,
+#collaboration-submenu a:hover {
+    color: orange;
+}
+
+/* Highlight selected menu item and submenu */
+.selected-menu-item {
+    background-color: #555;  /* Consistent darker gray for selected menu items */
+}
+
+#sub-menu a.selected,
+#collaboration-submenu a.selected {
+    color: orange;
+    background-color: #555;  /* Consistent darker gray for selected submenu items */
+}
+
+/* About and Contact active state */
+nav a.about-link.active,
+nav a.contact-link.active {
+    background-color: #555;  /* Darker gray for about and contact when active */
+    transition: background-color 0.3s ease;
+}
+
+/* Content container */
 #content-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30vw; /* 30% of the viewport width */
-    height: 30vw; /* Square aspect ratio */
-    margin: 0 auto;
-    padding-top: 5%;
-    position: relative; /* Needed to keep z-index working */
-    z-index: 1; /* Lower z-index so menus appear above this */
+    width: 30vw;
+    height: 30vw;
+    margin: 5% auto;
 }
 
 #content-container img {
@@ -140,10 +199,35 @@ nav button.selected {
     object-fit: contain;
 }
 
+/* Footer styles */
 footer {
     text-align: center;
     padding: 10px;
-    background-color: black;
+    background-color: transparent;
     color: gray;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    #content-container {
+        width: 80vw;
+        height: 80vw;
+    }
+
+    nav a,
+    nav button,
+    #sub-menu a,
+    #collaboration-submenu a {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #site-title {
+        font-size: 20px;
+    }
+
+    .menu-toggle {
+        font-size: 20px;
+    }
 }
 
